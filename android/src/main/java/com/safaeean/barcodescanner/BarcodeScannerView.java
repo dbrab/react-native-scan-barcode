@@ -43,11 +43,12 @@ public class BarcodeScannerView extends FrameLayout implements Camera.PreviewCal
         mPreview.stopCamera();  // workaround for reload js
         // mPreview.onPause();
     }
-
+    
+    @ReactProp(name = "cameraType")
     public void setCameraType(String cameraType) {
         mPreview.setCameraType(cameraType);
     }
-
+    @ReactProp(name = "flash")
     public void setFlash(boolean flag) {
         mPreview.setFlash(flag);
     }
@@ -112,5 +113,15 @@ public class BarcodeScannerView extends FrameLayout implements Camera.PreviewCal
             // TODO: Terrible hack. It is possible that this method is invoked after camera is released.
             Log.e(TAG, e.toString(), e);
         }
+    }
+
+        public Map getExportedCustomBubblingEventTypeConstants() {
+        return MapBuilder.builder().put(
+            "topChange",
+            MapBuilder.of(
+                "phasedRegistrationNames",
+                MapBuilder.of("bubbled", "onChange")
+            )
+        ).build();
     }
 }

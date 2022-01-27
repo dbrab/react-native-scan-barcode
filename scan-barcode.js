@@ -71,8 +71,6 @@ BarcodeScannerView.defaultProps = {
   showViewFinder: true,
 };
 
-var RNBarcodeScannerView = requireNativeComponent('RNBarcodeScannerView', BarcodeScannerView, {
-  nativeOnly: {onChange: true}
-});
+var RNBarcodeScannerView = requireNativeComponent('RNBarcodeScannerView');
 
 module.exports = BarcodeScannerView;
